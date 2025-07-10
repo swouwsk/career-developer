@@ -1,4 +1,4 @@
-from logic import *
+
 from config import *
 import sqlite3
 from telebot import TeleBot
@@ -10,107 +10,134 @@ hideBoard = types.ReplyKeyboardRemove()
 
 QUIZ = [
     {
-        "text": "Which type of challenge would you most enjoy solving?",
+        "text": "1. Which type of challenge would you most enjoy solving?",
         "options": {
-            "Designing a user-friendly app or website": {"IT": 1},
-            "Writing a short story or creating a piece of art": {"Creativity": 1},
-            "Helping someone overcome personal difficulties": {"Social": 1},
-            "Diagnosing a health issue based on symptoms": {"Medicine": 1},
-            "Fixing or building a mechanical device": {"Technical": 1}
+            "Designing a user-friendly app or website": "IT",
+            "Writing a short story or creating a piece of art": "Creativity",
+            "Helping someone overcome personal difficulties": "Social",
+            "Diagnosing a health issue based on symptoms": "Medicine",
+            "Fixing or building a mechanical device": "Technical"
         }
     },
     {
-        "text": "What kind of school projects did you enjoy the most?",
+        "text": "2. What kind of school projects did you enjoy the most?",
         "options": {
-            "Programming or building something digital": {"IT": 1},
-            "Creative presentations or storytelling": {"Creativity": 1},
-            "Group discussions and social issues": {"Social": 1},
-            "Experiments in biology or chemistry": {"Medicine": 1},
-            "Hands-on construction or engineering tasks": {"Technical": 1}
+            "Programming or building something digital": "IT",
+            "Creative presentations or storytelling": "Creativity",
+            "Group discussions and social issues": "Social",
+            "Experiments in biology or chemistry": "Medicine",
+            "Hands-on construction or engineering tasks": "Technical"
         }
     },
     {
-        "text": "Which work style best describes you?",
+        "text": "3. Which work style best describes you?",
         "options": {
-            "Structured and analytical": {"IT": 1},
-            "Expressive and imaginative": {"Creativity": 1},
-            "Supportive and emotionally aware": {"Social": 1},
-            "Careful and detail-focused": {"Medicine": 1},
-            "Practical and task-oriented": {"Technical": 1}
+            "Structured and analytical": "IT",
+            "Expressive and imaginative": "Creativity",
+            "Supportive and emotionally aware": "Social",
+            "Careful and detail-focused": "Medicine",
+            "Practical and task-oriented": "Technical"
         }
     },
     {
-        "text": "You have a free weekend. What do you choose to do?",
+        "text": "4. You have a free weekend. What do you choose to do?",
         "options": {
-            "Try coding something new or solve a puzzle": {"IT": 1},
-            "Draw, write, or film something creative": {"Creativity": 1},
-            "Volunteer or hang out with friends": {"Social": 1},
-            "Read about health or science topics": {"Medicine": 1},
-            "Fix something at home or build a DIY project": {"Technical": 1}
+            "Try coding something new or solve a puzzle": "IT",
+            "Draw, write, or film something creative": "Creativity",
+            "Volunteer or hang out with friends": "Social",
+            "Read about health or science topics": "Medicine",
+            "Fix something at home or build a DIY project": "Technical"
         }
     },
     {
-        "text": "What environment do you see yourself working in?",
+        "text": "5. What environment do you see yourself working in?",
         "options": {
-            "Remote office or tech company": {"IT": 1},
-            "Creative studio or media agency": {"Creativity": 1},
-            "School, center, or hospital with people": {"Social": 1},
-            "Clinic, lab, or research institution": {"Medicine": 1},
-            "Workshop, factory, or construction site": {"Technical": 1}
+            "Remote office or tech company": "IT",
+            "Creative studio or media agency": "Creativity",
+            "School, center, or hospital with people": "Social",
+            "Clinic, lab, or research institution": "Medicine",
+            "Workshop, factory, or construction site": "Technical"
         }
     },
     {
-        "text": "What motivates you the most?",
+        "text": "6. What motivates you the most?",
         "options": {
-            "Solving complex logical problems": {"IT": 1},
-            "Expressing ideas in unique ways": {"Creativity": 1},
-            "Improving others’ lives and well-being": {"Social": 1},
-            "Understanding how the human body works": {"Medicine": 1},
-            "Creating or repairing something physical": {"Technical": 1}
+            "Solving complex logical problems": "IT",
+            "Expressing ideas in unique ways": "Creativity",
+            "Improving others’ lives and well-being": "Social",
+            "Understanding how the human body works": "Medicine",
+            "Creating or repairing something physical": "Technical"
         }
     },
     {
-        "text": "What type of collaboration do you prefer?",
+        "text": "7. What type of collaboration do you prefer?",
         "options": {
-            "Working independently on technical tasks": {"IT": 1},
-            "Brainstorming creative ideas with others": {"Creativity": 1},
-            "Interacting and communicating with people": {"Social": 1},
-            "Sharing knowledge to solve real-life problems": {"Medicine": 1},
-            "Coordinating hands-on work in a team": {"Technical": 1}
+            "Working independently on technical tasks": "IT",
+            "Brainstorming creative ideas with others": "Creativity",
+            "Interacting and communicating with people": "Social",
+            "Sharing knowledge to solve real-life problems": "Medicine",
+            "Coordinating hands-on work in a team": "Technical"
         }
     },
     {
-        "text": "What kind of content are you drawn to online?",
+        "text": "8. What kind of content are you drawn to online?",
         "options": {
-            "Tech trends, programming tutorials": {"IT": 1},
-            "Art, design, or writing inspiration": {"Creativity": 1},
-            "Mental health or communication skills": {"Social": 1},
-            "Science documentaries, health advice": {"Medicine": 1},
-            "Gadgets, tools, or DIY builds": {"Technical": 1}
+            "Tech trends, programming tutorials": "IT",
+            "Art, design, or writing inspiration": "Creativity",
+            "Mental health or communication skills": "Social",
+            "Science documentaries, health advice": "Medicine",
+            "Gadgets, tools, or DIY builds": "Technical"
         }
     },
     {
-        "text": "If you could instantly gain expertise in one area, which would it be?",
+        "text": "9. If you could instantly gain expertise in one area, which would it be?",
         "options": {
-            "Cybersecurity or AI": {"IT": 1},
-            "Film direction or illustration": {"Creativity": 1},
-            "Psychology or conflict resolution": {"Social": 1},
-            "Surgery or disease treatment": {"Medicine": 1},
-            "Automotive or robotics engineering": {"Technical": 1}
+            "Cybersecurity or AI": "IT",
+            "Film direction or illustration": "Creativity",
+            "Psychology or conflict resolution": "Social",
+            "Surgery or disease treatment": "Medicine",
+            "Automotive or robotics engineering": "Technical"
         }
     },
     {
-        "text": "Which compliment would mean the most to you?",
+        "text": "10. Which compliment would mean the most to you?",
         "options": {
-            "“You’re incredibly logical and efficient.”": {"IT": 1},
-            "“You’re full of original ideas.”": {"Creativity": 1},
-            "“You really understand and care about people.”": {"Social": 1},
-            "“You have excellent focus and precision.”": {"Medicine": 1},
-            "“You’re a hands-on problem solver.”": {"Technical": 1}
+            "“You’re incredibly logical and efficient.”": "IT",
+            "“You’re full of original ideas.”": "Creativity",
+            "“You really understand and care about people.”": "Social",
+            "“You have excellent focus and precision.”": "Medicine",
+            "“You’re a hands-on problem solver.”": "Technical"
         }
     }
 ]
 categories = ["IT", "Creativity", "Social", "Medicine", "Technical"]
+
+def init_db():
+    conn = sqlite3.connect('quiz.db')
+    c = conn.cursor()
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            user_id INTEGER PRIMARY KEY,
+            step INTEGER DEFAULT 0,
+            IT INTEGER DEFAULT 0,
+            Creativity INTEGER DEFAULT 0,
+            Social INTEGER DEFAULT 0,
+            Medicine INTEGER DEFAULT 0,
+            Technical INTEGER DEFAULT 0
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+# Создание пользователя, если нет
+def create_user_if_not_exists(user_id):
+    conn = sqlite3.connect('quiz.db')
+    c = conn.cursor()
+    c.execute('SELECT user_id FROM users WHERE user_id = ?', (user_id,))
+    if not c.fetchone():
+        c.execute('INSERT INTO users (user_id) VALUES (?)', (user_id,))
+    conn.commit()
+    conn.close()
 
 @bot.message_handler(commands=['start'])
 def start_command(message):
@@ -161,7 +188,7 @@ def send_question(user_id):
     q = QUIZ[step]
     markup = InlineKeyboardMarkup()
     for option_text, category in q['options'].items():
-        btn = InlineKeyboardButton(text=option_text, callback_data=category)
+        btn = InlineKeyboardButton(text=option_text, callback_data=str(category))
         markup.add(btn)
     bot.send_message(user_id, q['text'], reply_markup=markup)
 
