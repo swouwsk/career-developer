@@ -16,9 +16,9 @@
 - `/quiz` — Take a quiz to discover professions that match your interests.
 - `/profession [name]` — Get information about a specific profession (e.g., `/profession designer`).
 - `/advice` — Receive career advice and tips.
-- `/goals` — Set or review your career goals.
-- `/faq` — Browse frequently asked questions about careers.
-- `/help` — Display a list of all available commands.
+- `/proflist` — List all available professions you can learn about.
+- `/categories` — View categories and their professions.
+- `/info` — Display a list of all available commands.
 
 ## Why Use Career Developer?
 
